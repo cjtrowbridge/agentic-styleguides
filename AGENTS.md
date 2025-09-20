@@ -71,3 +71,6 @@ A lightweight coding standard focused on clarity, simplicity, and vibe.
     - Admin Monitoring Roadmap
         * Plan for admin error notifications and monitoring.
         * Integrate alerts into the admin homepage dashboard and in-app notifications.
+
+8. Language-specific styleguides
+    - For Java CLI coding, read java-cli-development.md
