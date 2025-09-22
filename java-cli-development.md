@@ -151,3 +151,10 @@ You may want them if:
    * Package JAR.
 3. Test locally with `java -jar app.jar`.
 4. Ship JAR or build per-OS installers with `jpackage`.
+
+## 9. Logging and Integration
+- The project needs its own root-level AGENTS.md which directs agents to read the styleguides from this submodule.
+- The project should output verbose logs to a root level log.txt file, including all user output, user actions, and the results of user actions.
+  - This enables LLMs to debug without trying to guess what's happening and because LLMs themselves are generally unable to interact with the ui directly.
+- Tests should be defined in the root-level AGENTS.md file, and running the application should produce verbose enough output to facilitate testing during LLM runs.
+- LLMs should use alternative run modes such as "-test" to simulate a broad range of passive user activity in order to facilitate testing without bogging down application startup by testing every feture during normal user startup modes. Test modes should not change user content such as database content.
