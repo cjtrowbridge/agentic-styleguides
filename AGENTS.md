@@ -30,6 +30,9 @@ A lightweight coding standard focused on clarity, simplicity, and vibe.
         * Use docstrings for all public functions and modules.
         * Inline comments are encouraged if the purpose is not immediately clear.
         * No TODOs without context—always write what needs to happen.
+    * Do not do things that you were not asked to do
+        * Do not create extra tools or functions that aren't directly related to your actual instructions or directions.
+        * It's fine to recommend to the user that these kinds of things might be helpful, but if it's not actually necessary then no deviations into creating new internal tools that weren't a part of the plans of instructions.
 
 4. Tooling and Automation
     - Use AIs and LLMs Wisely
