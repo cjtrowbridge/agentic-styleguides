@@ -74,3 +74,10 @@ A lightweight coding standard focused on clarity, simplicity, and vibe.
 
 8. Language-specific styleguides
     - For Java CLI coding, read java-cli-development.md
+
+9. Documentation is mandatory
+    - All function definitions should include a multiline comment block at the top explaining what the function does in terms complete and detailed enough to allow someone to rewrite the function without needing to see any details of the code. It should an explanation of the inputs, the outputs, and any logic that happens.
+    - Code should be organized into directories as appropriate so that specific subsystems and topics are grouped together in the filesystem.
+    - Each of these directories should have a README.md which starts with a high-level overview of the logic in the directory, and then a detailed explanation of all aspects of what is happening in all the code files the directory.
+    - Any time code is changed, if the function or prupose of the logic has changed in any way, this documentation must be updated to reflect the new facts rather than the old facts.
+    - Hierarchcically, README.md files in parent directories should include high-level logical explanations of their child directories; complete enough to explain everything that's happening in terms of logic, but not in terms of code. Detailed code explanations should only be included for code in the same directory as the explanation.
