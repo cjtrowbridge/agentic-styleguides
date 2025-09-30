@@ -38,7 +38,53 @@ Every repository that contains CLI‑based tools must include a comprehensive **
 
 Agents and developers should read `README.md` first to understand how to apply the various style guides in the repository.
 
-## 5. Logging best practices
+## 5. Project roadmap and specification requirements
+
+Every CLI‑based project must include:
+
+* **`project-roadmap.md`** - Comprehensive development roadmap with all tasks and features
+* **`project-specification.md`** - Detailed technical specification and requirements
+* **`social-context.md`** - Social context, organization details, partnerships, and impact
+
+### Roadmap requirements
+
+The roadmap must include:
+
+* **Status legend** at the top explaining checkbox meanings:
+  - `[ ]` - Not started
+  - `[?]` - In progress / Testing / Development  
+  - `[x]` - Completed and tested
+* **All major and minor tasks** broken down by phases
+* **Current status** clearly marked with appropriate checkboxes
+* **Update instructions** requiring roadmap updates whenever tasks change status
+
+### Specification requirements
+
+The specification must include:
+
+* **Complete technical requirements** for all features
+* **Architecture details** and component descriptions
+* **Configuration schemas** and data formats
+* **Success criteria** and acceptance tests
+* **Security and privacy** requirements
+
+### Social context requirements
+
+The social context document must include:
+
+* **Organization details** and mission statement
+* **Partnerships and collaborations** with other organizations
+* **Use cases and user stories** showing how the project helps people
+* **Community impact** and social benefits
+* **Future opportunities** and potential for related projects
+* **Stakeholder information** and target audiences
+* **Cultural and social considerations** relevant to the project
+* **Accessibility and inclusion** aspects
+* **Ethical considerations** and responsible development practices
+
+All three documents must be kept current whenever project details change, features are added, or development status updates.
+
+## 6. Logging best practices
 
 The following guidelines apply across languages:
 
@@ -47,7 +93,7 @@ The following guidelines apply across languages:
 * **Context in messages.** Include enough detail in each log entry to understand what was happening. For example, log input parameters, intermediate results, and the outcome of operations.
 * **Cross‑language adherence.** When your project consists of components in multiple languages, ensure that each component writes to the same log file in the same format.
 
-## 6. Integration with large language models (LLMs)
+## 7. Integration with large language models (LLMs)
 
 LLMs cannot see your GUI or internal state; they rely entirely on textual output. To make your tool LLM‑friendly:
 
@@ -55,7 +101,7 @@ LLMs cannot see your GUI or internal state; they rely entirely on textual output
 * **Descriptive errors.** Write error messages that explain what went wrong and how to fix it. Avoid cryptic messages or silent failures.
 * **Deterministic output.** When possible, avoid non‑deterministic ordering of logs (e.g. due to concurrency) that could confuse automated analysis. If concurrency is necessary, clearly label log lines with thread or process identifiers.
 
-## 7. Example CLI workflow
+## 8. Example CLI workflow
 
 Document a typical usage scenario for your tool. For example:
 
@@ -73,7 +119,7 @@ cat log.txt
 ./mytool --status
 ```
 
-## 8. Language-Specific Supplementary Styleguides
+## 9. Language-Specific Supplementary Styleguides
 For development in these langauges, read and follow these additional styles:
 - java-cli-development.md
 - python-cli-development.md
