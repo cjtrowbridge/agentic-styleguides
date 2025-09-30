@@ -73,4 +73,9 @@ cat log.txt
 ./mytool --status
 ```
 
+## 8. Language-Specific Supplementary Styleguides
+For development in these langauges, read and follow these additional styles:
+- java-cli-development.md
+- python-cli-development.md
+
 By following this style guide, your CLI‑based development tools will remain transparent, debuggable, and compatible with automated agents as your project evolves.
