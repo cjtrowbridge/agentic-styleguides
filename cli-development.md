@@ -28,15 +28,15 @@ LLMs often need to verify that your tool behaves correctly without modifying rea
 
 When running in test mode, the tool should exercise enough code paths to make automated testing effective. This allows LLMs to verify functionality without incurring the overhead of running integration tests during every normal startup.
 
-## 4. AGENTS.md and style guide references
+## 4. README.md and style guide references
 
-Every repository that contains CLI‑based tools must include a root‑level **`AGENTS.md`** file. The purpose of this file is to orient both human developers and agentic tools. At a minimum, it should:
+Every repository that contains CLI‑based tools must include a comprehensive **`README.md`** file. The styleguide references must be listed at the top of the README.md so that agents will always see them first. At a minimum, the README.md should:
 
+* List relevant styleguide files at the top with brief descriptions
 * Describe the high‑level purpose of the project and its architecture.
-* Point to the relevant language‑specific development style guides (for example, `java-development.md` for Java projects) and this CLI style guide for logging and interpretability rules.
 * Explain where logs live (`log.txt` or similar) and how to run the project in normal and test modes.
 
-Agents and developers should read `AGENTS.md` first to understand how to apply the various style guides in the repository.
+Agents and developers should read `README.md` first to understand how to apply the various style guides in the repository.
 
 ## 5. Logging best practices
 
