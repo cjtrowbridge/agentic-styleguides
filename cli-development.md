@@ -10,13 +10,13 @@ This style guide outlines best practices for command‑line interface (CLI) deve
 
 ## 2. Verbose logging
 
-To support LLMs and developers in understanding your tool’s behaviour, every CLI‑based project must produce a root‑level log file (for example, `log.txt`) containing:
+To support LLMs and developers in understanding your tool’s behaviour, every CLI‑based project must create a root‑level log directory (for example, `logs/`). Each run of the application must write to a brand‑new log file inside that directory named with the timestamp of when the run started using a sortable pattern such as `log.YYYY-MM-DD-HH-mm-ss-ffffff.txt`. Every per-run log file must contain:
 
 * **User inputs and actions.** Log the exact command arguments or interactive input received.
 * **Outputs and results.** Log what the tool prints to stdout/stderr and any side effects it performs (e.g. files written, network calls made, database queries executed). Include timestamps to aid debugging.
 * **Contextual metadata.** Provide information about the component generating the log (module name, function, or class) and the phase of the operation.
 
-Logs should be written in a plain‑text, append‑only format. Avoid rotating logs or deleting them mid‑run. The goal is to give agents complete visibility into what happened during execution. If multiple processes are spawned (for example, launching Tor or IPFS as sub‑processes), their stdout/stderr should also be captured and appended to the same log file.
+Logs should be written in a plain‑text, append‑only format. The goal is to give agents complete visibility into what happened during execution, so do not reuse log files across runs—always start a fresh, timestamped file when the process begins. If multiple processes are spawned (for example, launching Tor or IPFS as sub‑processes), their stdout/stderr should also be captured and appended to that run’s log file.
 
 ## 3. Test mode and simulation
 
@@ -34,7 +34,7 @@ Every repository that contains CLI‑based tools must include a comprehensive **
 
 * List relevant styleguide files at the top with brief descriptions
 * Describe the high‑level purpose of the project and its architecture.
-* Explain where logs live (`log.txt` or similar) and how to run the project in normal and test modes.
+* Explain where logs live (for example, the root‑level `logs/` directory and the timestamped files it contains) and how to run the project in normal and test modes.
 
 Agents and developers should read `README.md` first to understand how to apply the various style guides in the repository.
 
@@ -91,7 +91,7 @@ The following guidelines apply across languages:
 * **Consistent format.** Use a structured logging format (e.g. timestamps, log level, module name, message). Consistency makes parsing and analysis easier for tools.
 * **Appropriate log levels.** Use `INFO` for normal operations, `WARN` for recoverable issues, and `ERROR` for serious problems. Do not hide exceptions—log stack traces at the `ERROR` level.
 * **Context in messages.** Include enough detail in each log entry to understand what was happening. For example, log input parameters, intermediate results, and the outcome of operations.
-* **Cross‑language adherence.** When your project consists of components in multiple languages, ensure that each component writes to the same log file in the same format.
+* **Cross‑language adherence.** When your project consists of components in multiple languages, ensure that each component writes to the same per-run log file in the same format.
 
 ## 7. Integration with large language models (LLMs)
 
@@ -109,8 +109,9 @@ Document a typical usage scenario for your tool. For example:
 # run the tool normally and capture logs
 ./mytool --input data.txt --output results.txt
 
-# inspect the log file
-cat log.txt
+# inspect the newest log file
+ls logs/
+cat "$(ls -t logs/log.* | head -n 1)"
 
 # run in test mode
 ./mytool --test
