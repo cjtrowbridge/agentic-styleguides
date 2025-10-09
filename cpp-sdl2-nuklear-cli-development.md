@@ -26,7 +26,7 @@ A CLI-first C++ style instead:
 
 This guide standardizes on **SDL2 + Nuklear** as the preferred GUI combination for small cross-platform applications.
 
-### **Reasons:**
+### Reasons
 
 * **Tiny footprint:** SDL2 handles windows, input, and rendering; Nuklear adds GUI widgets in a single header file.
 * **Pure C/C++ stack:** No CMake superprojects, XML manifests, or dynamic runtime frameworks.
@@ -35,7 +35,7 @@ This guide standardizes on **SDL2 + Nuklear** as the preferred GUI combination f
 * **Cross-platform:** Works seamlessly on Linux, Windows, and macOS.
 * **Transparent builds:** You can literally see every flag and file in the build command.
 
-### **Goal:**
+### Goal
 
 > To build small, fast, portable GUI utilities — such as RSS readers, Ollama frontends, and monitoring dashboards — that compile in seconds and distribute as single executables.
 
@@ -234,3 +234,57 @@ int main() {
 ---
 
 By following this **CLI-first C++ style**, you’ll produce self-contained, portable GUI tools that compile in seconds, run anywhere, and depend on nothing but your own source code. SDL2 + Nuklear provides just enough GUI capability to make tools usable without sacrificing performance or simplicity—perfect for small, independent, and reproducible software projects.
+
+---
+
+## 11. Logging and Interpretability
+
+CLI-first C++ tools should adopt the same verbose logging rules described in the general CLI development guide. At minimum:
+
+* **Root‑level log files:** Create an append‑only log file in the project root capturing all user inputs, outputs, and contextual metadata. Avoid log rotation or deletion—maintain a complete history.
+* **Plain text format:** Logs must be plain text so that both humans and automated agents can parse them easily.
+* **Include subprocess output:** If your application spawns subprocesses, capture their `stdout` and `stderr` streams and append them to the same log.
+* **Deterministic ordering:** Log entries should appear in the exact order actions occur to make replaying and auditing runs straightforward.
+* **See the CLI development guide:** For details on log levels (INFO, WARN, ERROR) and cross‑language log formats, refer to `cli-development.md` in this repository.
+
+---
+
+## 12. Test Mode & Simulation
+
+Implement a `--test`, `--dry-run`, or similar command‑line flag that runs the application in simulation mode. In test mode:
+
+* **No real side effects:** Use temporary directories for configuration, storage, and outputs. Do not modify user data or external systems.
+* **Same code paths:** Exercise the same code paths and produce the same output and logging as a real run so automated agents can verify behavior.
+* **Reproducibility:** Because test mode writes to isolated locations and never modifies real data, results can be replayed for testing and auditing.
+* **Documentation:** Explain your test mode in the README and CLI help text so users and agents know how to activate it.
+
+---
+
+## 13. Project Roadmap, Specification & Social Context
+
+Every CLI-first project should include the following files at the repository root:
+
+* **`project-roadmap.md`** – A human‑readable task list with a status legend. List upcoming features, tasks, and bug fixes. Check off items as they’re completed and keep completed tasks for historical context.
+* **`project-specification.md`** – A technical specification that outlines functional requirements, architecture, data flows, error‑handling expectations, and any third‑party services or APIs.
+* **`social-context.md`** – A document describing why the project exists and who benefits. Include the history of the project, any ethical or privacy considerations, the stakeholders involved, and how the tool fits into a broader ecosystem.
+
+These documents make it easier for contributors, users, and automated agents to understand the high‑level purpose and current state of your project.
+
+---
+
+## 14. Including External Tools (Tor, IPFS, etc.)
+
+Sometimes a CLI-first C++ tool needs to interface with external binaries—such as **Tor** for anonymous networking or **IPFS** for decentralized storage. To bundle and manage these tools reliably:
+
+1. Place the external binaries in an `assets/bin/` directory within your repository.
+2. At runtime, extract the binaries to a temporary directory using standard C++ filesystem utilities.
+3. Launch the binaries with `std::system` or a process library (e.g., `Boost.Process`) and communicate via sockets, pipes, or command-line interfaces.
+4. Include configuration files in `assets/etc/` and reference them when launching the external tools.
+
+By vendoring external binaries you avoid relying on system installations and maintain control over versions and configurations.
+
+---
+
+## 15. Cross‑Referencing this Guide
+
+This C++ guide is part of a larger style guide collection. For general logging, interpretability, and agent‑integration rules that apply to all CLI‑based projects, refer to `cli-development.md` in this repository.
