@@ -19,6 +19,7 @@ A CLI-first C++ style instead:
 * Builds from **Makefiles** or **shell/batch scripts**.
 * Keeps source trees **transparent, minimal, and reproducible**.
 * Emphasizes **small self-contained binaries** that link only what they need.
+* Guarantees **dual-platform support**—all code must build and run on both Windows and Linux without divergence.
 
 ---
 

@@ -7,6 +7,7 @@ This style guide outlines best practices for command‑line interface (CLI) deve
 * **CLI first.** The CLI should be the primary interface for your tool. Even if a GUI exists, every operation must be executable from the command line so that automated agents and scripts can drive the tool without a GUI.
 * **Transparency.** Everything that happens in your tool should be visible in the CLI. Hiding behaviour behind GUI elements or implicit side effects makes it impossible for developers and LLMs to reason about what the tool is doing.
 * **Reproducibility.** A user (or agent) following the documented CLI commands should be able to reproduce any run of your tool. Avoid hidden state or reliance on external environment configuration when possible.
+* **Cross-platform reliability.** All code must run correctly on both Windows and Linux without requiring manual tweaks or OS-specific forks.
 
 ## 2. Verbose logging
 

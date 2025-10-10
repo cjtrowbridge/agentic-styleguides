@@ -1,6 +1,6 @@
 # CLI-First Python Development Style Guide
 
-This document describes a simple, command-line–first approach to writing, running, and distributing Python software. The focus is on making projects transparent, reproducible, and easy to integrate with automated agents. For logging and interpretability rules that apply to all CLI-based projects, see `cli-styleguide.md`.
+This document describes a simple, command-line–first approach to writing, running, and distributing Python software. The focus is on making projects transparent, reproducible, and easy to integrate with automated agents. For logging and interpretability rules that apply to all CLI-based projects, see `cli-development.md`.
 
 ---
 
@@ -18,6 +18,7 @@ A CLI-first style instead:
 * Relies on **text editors** and **scripts** (Makefiles, batch files, shell scripts).
 * Keeps projects **transparent and reproducible**.
 * Emphasizes **self-contained applications** that work on any machine.
+* Requires **Windows and Linux parity** so the same codebase builds and runs without changes on both operating systems.
 
 ---
 
