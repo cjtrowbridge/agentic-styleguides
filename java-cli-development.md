@@ -1,6 +1,6 @@
 # CLI-First Java Development Style Guide
 
-This document describes a simple, command-line–first approach to writing, building, and distributing Java software. The focus is on keeping projects transparent, reproducible, and free from heavy build systems. For logging and interpretability rules that apply to all CLI-based projects (including Java), please refer to `cli-styleguide.md` in this repository.
+This document describes a simple, command-line–first approach to writing, building, and distributing Java software. The focus is on keeping projects transparent, reproducible, and free from heavy build systems. For logging and interpretability rules that apply to all CLI-based projects (including Java), please refer to `cli-development.md` in this repository.
 
 ---
 
@@ -19,6 +19,7 @@ A CLI-first style instead:
 * Relies on **text editors** and **scripts** (Makefiles, batch files, shell scripts).
 * Keeps projects **transparent and reproducible**.
 * Emphasizes **self-contained applications** that include everything they need (JRE, binaries like Tor/IPFS, configs).
+* Demands **cross-platform operation**—every build and runtime workflow must function on both Windows and Linux without manual adjustments.
 
 ---
 

@@ -19,6 +19,7 @@ A CLI-first C++ style instead:
 * Builds from **Makefiles** or **shell/batch scripts**.
 * Keeps source trees **transparent, minimal, and reproducible**.
 * Emphasizes **small self-contained binaries** that link only what they need.
+* Guarantees **dual-platform support**—all code must build and run on both Windows and Linux without divergence.
 
 ---
 
@@ -241,9 +242,9 @@ By following this **CLI-first C++ style**, you’ll produce self-contained, port
 
 CLI-first C++ tools should adopt the same verbose logging rules described in the general CLI development guide. At minimum:
 
-* **Root‑level log files:** Create an append‑only log file in the project root capturing all user inputs, outputs, and contextual metadata. Avoid log rotation or deletion—maintain a complete history.
+* **Root‑level log directory:** Maintain a root-level `logs/` directory (or similarly named folder). Each time the application starts, create a new plain-text log file inside that directory named with the start timestamp (for example, `log.YYYY-MM-DD-HH-mm-ss-ffffff.txt`) and capture all user inputs, outputs, and contextual metadata within that file.
 * **Plain text format:** Logs must be plain text so that both humans and automated agents can parse them easily.
-* **Include subprocess output:** If your application spawns subprocesses, capture their `stdout` and `stderr` streams and append them to the same log.
+* **Include subprocess output:** If your application spawns subprocesses, capture their `stdout` and `stderr` streams and append them to the same per-run log file.
 * **Deterministic ordering:** Log entries should appear in the exact order actions occur to make replaying and auditing runs straightforward.
 * **See the CLI development guide:** For details on log levels (INFO, WARN, ERROR) and cross‑language log formats, refer to `cli-development.md` in this repository.
 
